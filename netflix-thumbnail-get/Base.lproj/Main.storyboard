@@ -22,18 +22,29 @@
                                 <textInputTraits key="textInputTraits" textContentType="url"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nA4-aD-2hj">
-                                <rect key="frame" x="16" y="329.66666666666669" width="361" height="192.66666666666669"/>
+                                <rect key="frame" x="16" y="142" width="361" height="203"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <color key="tintColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="nA4-aD-2hj" secondAttribute="height" multiplier="15:8" id="xwE-Fl-tEJ"/>
+                                    <constraint firstAttribute="width" secondItem="nA4-aD-2hj" secondAttribute="height" multiplier="16:9" id="xwE-Fl-tEJ"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JAf-8y-0iW">
+                                <rect key="frame" x="16" y="109" width="361" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="nA4-aD-2hj" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="5to-eu-CWo"/>
+                            <constraint firstItem="JAf-8y-0iW" firstAttribute="top" secondItem="wac-yz-LpQ" secondAttribute="bottom" constant="16" id="BGN-Es-jaK"/>
                             <constraint firstItem="nA4-aD-2hj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CUf-yw-fvA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JAf-8y-0iW" secondAttribute="trailing" constant="16" id="E3h-cr-jt0"/>
+                            <constraint firstItem="nA4-aD-2hj" firstAttribute="top" secondItem="JAf-8y-0iW" secondAttribute="bottom" constant="12" id="KpY-rr-6wr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wac-yz-LpQ" secondAttribute="trailing" constant="16" id="RlG-ED-rIs"/>
+                            <constraint firstItem="JAf-8y-0iW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Zxt-fk-CTZ"/>
                             <constraint firstItem="wac-yz-LpQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="qfO-p5-A1a"/>
                             <constraint firstItem="wac-yz-LpQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="w2t-OD-1t8"/>
                             <constraint firstItem="nA4-aD-2hj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="wXw-Ce-VWc"/>
@@ -42,6 +53,7 @@
                     <connections>
                         <outlet property="imageView" destination="nA4-aD-2hj" id="UBl-xl-8d7"/>
                         <outlet property="textField" destination="wac-yz-LpQ" id="MQt-pe-Sx6"/>
+                        <outlet property="titleLabel" destination="JAf-8y-0iW" id="aLj-uJ-ynD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -52,6 +64,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

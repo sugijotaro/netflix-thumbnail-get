@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  netflix-thumbnail-get
-//
-//  Created by JotaroSugiyama on 2023/02/04.
-//
-
 import UIKit
 import Alamofire
 import SwiftSoup
@@ -13,6 +6,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
     
     let activityIndicator = UIActivityIndicatorView(style: .medium)
     
@@ -34,48 +28,54 @@ class ViewController: UIViewController {
         let netflixUrl = url.replacingOccurrences(of: "\\?.*", with: "", options: .regularExpression)
         
         activityIndicator.startAnimating()
-        getThumbnailImage(url: netflixUrl) { (success) in
+        getMovieInfo(url: netflixUrl) { (success, title) in
             self.activityIndicator.stopAnimating()
             if (success != nil) {
                 self.imageView.image = success
+                self.titleLabel.text = title
             }
         }
     }
     
-    func getThumbnailImage(url: String, completion: @escaping (_ image: UIImage?) -> Void) {
+    func getMovieInfo(url: String, completion: @escaping (_ image: UIImage?, _ title: String?) -> Void) {
         AF.request(url).responseString { response in
             guard let html = response.value else {
-                completion(nil)
+                completion(nil, nil)
                 return
             }
             
             do {
                 let doc = try SwiftSoup.parse(html)
-                let elements = try doc.select("meta[property='og:image']")
+                let elementsImage = try doc.select("meta[property='og:image']")
+                let elementsTitle = try doc.select("meta[property='og:title']")
                 
-                guard let firstElement = elements.first() else {
-                    completion(nil)
+                guard let firstElementImage = elementsImage.first() else {
+                    completion(nil, nil)
                     return
                 }
                 
-                guard let imageUrl = try? firstElement.attr("content") else {
-                    completion(nil)
+                guard let firstElementTitle = elementsTitle.first() else {
+                    completion(nil, nil)
+                    return
+                }
+                
+                guard let imageUrl = try? firstElementImage.attr("content"), let title = try? firstElementTitle.attr("content") else {
+                    completion(nil, nil)
                     return
                 }
                 
                 AF.request(imageUrl).responseData { response in
                     guard let data = response.value else {
-                        completion(nil)
+                        completion(nil, nil)
                         return
                     }
                     
-                    completion(UIImage(data: data))
+                    completion(UIImage(data: data), title)
                 }
             } catch {
-                completion(nil)
+                completion(nil, nil)
             }
         }
     }
     
 }
-

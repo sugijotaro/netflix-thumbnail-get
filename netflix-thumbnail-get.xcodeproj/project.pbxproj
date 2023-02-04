@@ -14,7 +14,6 @@
 		0A787C36298E5E9C000788C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A787C35298E5E9C000788C6 /* Assets.xcassets */; };
 		0A787C39298E5E9C000788C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A787C37298E5E9C000788C6 /* LaunchScreen.storyboard */; };
 		0A787C42298E5EF4000788C6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0A787C41298E5EF4000788C6 /* Alamofire */; };
-		0A787C45298E5F06000788C6 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 0A787C44298E5F06000788C6 /* SwiftyJSON */; };
 		0A787C48298E5FAD000788C6 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 0A787C47298E5FAD000788C6 /* SwiftSoup */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +33,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A787C45298E5F06000788C6 /* SwiftyJSON in Frameworks */,
 				0A787C42298E5EF4000788C6 /* Alamofire in Frameworks */,
 				0A787C48298E5FAD000788C6 /* SwiftSoup in Frameworks */,
 			);
@@ -91,7 +89,6 @@
 			name = "netflix-thumbnail-get";
 			packageProductDependencies = (
 				0A787C41298E5EF4000788C6 /* Alamofire */,
-				0A787C44298E5F06000788C6 /* SwiftyJSON */,
 				0A787C47298E5FAD000788C6 /* SwiftSoup */,
 			);
 			productName = "netflix-thumbnail-get";
@@ -124,7 +121,6 @@
 			mainGroup = 0A787C20298E5E9A000788C6;
 			packageReferences = (
 				0A787C40298E5EF4000788C6 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				0A787C43298E5F06000788C6 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				0A787C46298E5FAD000788C6 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 			);
 			productRefGroup = 0A787C2A298E5E9A000788C6 /* Products */;
@@ -384,14 +380,6 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		0A787C43298E5F06000788C6 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
 		0A787C46298E5FAD000788C6 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scinfu/SwiftSoup";
@@ -407,11 +395,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0A787C40298E5EF4000788C6 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
-		};
-		0A787C44298E5F06000788C6 /* SwiftyJSON */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0A787C43298E5F06000788C6 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
-			productName = SwiftyJSON;
 		};
 		0A787C47298E5FAD000788C6 /* SwiftSoup */ = {
 			isa = XCSwiftPackageProductDependency;

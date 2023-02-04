@@ -31,12 +31,10 @@ class ViewController: UIViewController {
             return
         }
         
-        if !url.contains("www.netflix.com") {
-            return
-        }
+        let netflixUrl = url.replacingOccurrences(of: "\\?.*", with: "", options: .regularExpression)
         
         activityIndicator.startAnimating()
-        getThumbnailImage(url: url) { (success) in
+        getThumbnailImage(url: netflixUrl) { (success) in
             self.activityIndicator.stopAnimating()
             if (success != nil) {
                 self.imageView.image = success

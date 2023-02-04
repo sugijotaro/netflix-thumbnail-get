@@ -59,10 +59,12 @@ class ViewController: UIViewController {
                     return
                 }
                 
-                guard let imageUrl = try? firstElementImage.attr("content"), let title = try? firstElementTitle.attr("content") else {
+                guard let imageUrl = try? firstElementImage.attr("content"), var title = try? firstElementTitle.attr("content") else {
                     completion(nil, nil)
                     return
                 }
+                
+                title = title.replacingOccurrences(of: " \\| Netflix.*", with: "", options: .regularExpression)
                 
                 AF.request(imageUrl).responseData { response in
                     guard let data = response.value else {

@@ -18,6 +18,10 @@ class ViewController: UIViewController {
         view.addSubview(activityIndicator)
         
         textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        
+        imageView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(saveImage))
+        imageView.addGestureRecognizer(tapGesture)
     }
     
     @objc func textFieldDidChange() {
@@ -36,6 +40,36 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    @objc func saveImage(_ sender: UITapGestureRecognizer) {
+        guard let image = imageView.image else {
+            return
+        }
+        
+        let alert = UIAlertController(title: "保存", message: "画像を保存しますか？", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.saveImageCompletion), nil)
+        }
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
+        
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+
+    @objc func saveImageCompletion(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            print(error)
+            return
+        }
+        
+        let alert = UIAlertController(title: "保存が完了しました", message: nil, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+    }
+
     
     func getMovieInfo(url: String, completion: @escaping (_ image: UIImage?, _ title: String?) -> Void) {
         AF.request(url).responseString { response in
